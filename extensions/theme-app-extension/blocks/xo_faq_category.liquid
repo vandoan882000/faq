@@ -1,0 +1,88 @@
+{% comment %}theme-check-disable{% endcomment %}
+<script type="module" src="http://localhost:5173/dist/xb-faqs.js" defer></script>
+<link rel="stylesheet" href="{{ shop.metafields.xo_faqs.data.value.iconCssUrl }}" />
+
+{%- style -%}
+  .{{ block.id }}-padding {
+    padding-top: {{ block.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ block.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-left: {{ block.settings.padding_left | times: 0.75 | round: 0 }}px;
+    padding-right: {{ block.settings.padding_right | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .{{ block.id }}-padding {
+      padding-top: {{ block.settings.padding_top }}px;
+      padding-bottom: {{ block.settings.padding_bottom }}px;
+      padding-left: {{ block.settings.padding_left }}px;
+      padding-right: {{ block.settings.padding_right }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="{{ block.id }}-padding">
+  <xb-faq-category 
+    xb-id="{{ block.settings.category_id }}" 
+    xb-locale="{{ request.locale.iso_code }}" 
+    xb-data="{{ shop.metafields.xo_faqs.data.value.settings }}" 
+    xb-domain="{{ shop.domain | replace: '.myshopify.com', '' }}"
+  ></xb-faq-category>
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks.category.name",
+  "target": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:blocks.category.info"
+    },
+    { "type": "text", "id": "category_id", "label": "t:blocks.category.id" },
+    {
+      "type": "header",
+      "content": "t:blocks.padding.header"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.padding.top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.padding.bottom",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.padding.right",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:blocks.padding.left",
+      "default": 0
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,20 @@
+{
+  "blocks": {
+    "category": {
+      "name": "XO faqs category",
+      "id": "Category ID",
+      "info": "To edit faq settings or locate a category ID, go to Faqs app."
+    },
+    "page": {
+      "name": "XO faqs page",
+      "info": "To edit faq settings, go to Faqs app."
+    },
+    "padding": {
+      "header": "Padding",
+      "top": "Padding top",
+      "right": "Padding right",
+      "bottom": "Padding bottom",
+      "left": "Padding left"
+    }
+  }
+}
